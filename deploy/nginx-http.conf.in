@@ -1,0 +1,20 @@
+# Managed by Server Connector installer. Do not edit; rerun script.sh.
+server {
+    listen 80;
+    listen [::]:80;
+    server_name @@DOMAIN@@;
+    server_tokens off;
+    access_log off;
+    error_log /var/log/nginx/server-connector.error.log crit;
+    client_max_body_size 100k;
+
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/lib/server-connector/acme;
+        default_type text/plain;
+        try_files $uri =404;
+    }
+    location / {
+        default_type text/plain;
+        return 503 "HTTPS setup in progress.\n";
+    }
+}

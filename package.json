@@ -1,0 +1,41 @@
+{
+  "name": "server-connector",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "admin": "tsx src/cli.ts",
+    "test": "tsx --test --test-concurrency=1 tests/*.test.ts",
+    "test:cli": "npm run build && python3 tests/cli_smoke.py",
+    "test:installer": "bash -n script.sh && python3 tests/test_installer.py",
+    "test:nginx": "python3 tests/nginx_syntax.py",
+    "check": "tsc --noEmit && npm test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "better-sqlite3": "12.4.1",
+    "cookie-parser": "1.4.7",
+    "dotenv": "^17.2.3",
+    "express": "5.3.0",
+    "express-rate-limit": "^8.2.1",
+    "helmet": "^8.1.0",
+    "ipaddr.js": "^2.3.0",
+    "ssh2": "1.17.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/cookie-parser": "^1.4.10",
+    "@types/express": "^5.0.5",
+    "@types/node": "^22.19.0",
+    "@types/ssh2": "^1.15.5",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

@@ -1,0 +1,14 @@
+node_modules
+dist
+.git
+.env
+.env.*
+data
+secrets
+artifacts
+tmp
+.installer
+**/__pycache__
+*.sqlite*
+*.pem
+*.key

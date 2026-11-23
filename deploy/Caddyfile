@@ -1,0 +1,14 @@
+{
+  email {$ACME_EMAIL}
+  # Access logging is deliberately disabled: OAuth codes must not enter URL logs.
+  admin off
+}
+{$GATEWAY_DOMAIN} {
+  request_body {
+    max_size 100KB
+  }
+  reverse_proxy gateway:3080 {
+    # Preserve the public Host for the gateway's DNS rebinding protection.
+    header_up Host {host}
+  }
+}
